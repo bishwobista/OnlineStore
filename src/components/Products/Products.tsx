@@ -3,16 +3,10 @@ import { useDispatch } from 'react-redux'
 import { add } from '../../store/CartSlice/CartSlice'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
-// interface Product {
-//   id: number,
-//   title: string,
-//   price: number,
-//   description: string,
-//   category: string,
-//   image: string
-// }
+
 const Products = () => {
   const dispatch = useDispatch();
 
@@ -43,7 +37,8 @@ const Products = () => {
           products.map(
             (product: any) => {
               return (
-                <div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
+                <Link to={`/product/${product.id}`} key={product.id}>
+                  <div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'
                   key={product.id}>
                   <h2
                     className='text-gray-700 text-base'
@@ -63,6 +58,7 @@ const Products = () => {
                     Add to cart
                   </button>
                 </div>
+                </Link>
               )
             }
           )
