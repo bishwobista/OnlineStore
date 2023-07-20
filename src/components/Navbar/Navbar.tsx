@@ -2,11 +2,18 @@
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
   //responsive menu using react-icons
 
+  const items = useSelector((state: any) => {
+    return state.cart;
+  });
+
   return (
+
     <header
     className="i py-4 px-8 bg-white shadow-md"
     >
@@ -19,7 +26,7 @@ const Navbar = () => {
           Online Store
         </a>
         <ul
-        className="hidden lg:flex lg:flex-row lg:space-x-8"
+        className=" lg:flex lg:flex-row lg:space-x-8"
         >
           <li
           className="text-gray-700 font-medium text-base hover:text-gray-600"
@@ -47,7 +54,7 @@ const Navbar = () => {
           >
             <span
             className="flex items-center"
-            >Cart items: 0</span>
+            >{items.length} </span>
           </li>
         </ul>
       </nav>
