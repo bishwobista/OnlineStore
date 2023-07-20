@@ -1,22 +1,44 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/Home';
 import Cart from './pages/Cart/Cart';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+
 
 const AppLayout = () => {
   return (
-    <div>
-      <h1>App Layout</h1>
-    </div>
+    <>
+    <Navbar />
+    <Outlet />
+    <Footer/>
+    </>
   )
 }
+
+const route = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+    ],
+  },
+]);
+
+
+
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={route} />
   );
 }
 
