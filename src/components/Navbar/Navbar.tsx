@@ -1,4 +1,3 @@
-
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -14,6 +13,7 @@ const Navbar = () => {
 
   return (
 
+    <>
     <header
     className="i py-4 px-8 bg-white shadow-md"
     >
@@ -56,9 +56,22 @@ const Navbar = () => {
             className="flex items-center"
             >{items.length} </span>
           </li>
+          <li
+          className="text-gray-700 font-medium text-base hover:text-gray-600"
+          >
+            <NavLink
+              to="/search"
+              >
+                <input 
+            className="border border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+            type="search" placeholder="Search..." />
+              </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
+    
+    </>
   );
 };
 
