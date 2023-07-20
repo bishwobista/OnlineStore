@@ -4,6 +4,8 @@ import Cart from './pages/Cart/Cart';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import SearchBox from './components/SearchBox/SearchBox'
+import Product from './pages/Product/Product';
 
 
 const AppLayout = () => {
@@ -29,6 +31,14 @@ const route = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "/product/:id",
+        element: <Product/>
+      },
+      {
+        path: "/search",
+        element: <SearchBox/>
+      }
     ],
   },
 ]);
