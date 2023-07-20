@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/CartSlice/CartSlice'
 
 const Products = () => {
+  const dispatch = useDispatch();
     const [products, setProducts] = useState([])
   useEffect(() => {
     
@@ -11,6 +14,11 @@ const Products = () => {
     }
     fetchProducts()
   }, [])
+
+  const handleClick = (product: any) => {
+    dispatch(add(product));
+  }
+
   return (
     <>
         <h1>Products</h1>
@@ -30,6 +38,11 @@ const Products = () => {
                             >{product.price}</p>
                             <button 
                             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+                            onClick={
+                              () =>{
+                                handleClick(product)
+                              }
+                            }
                             >
                                 Add to cart
                             </button>
