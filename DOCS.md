@@ -79,9 +79,9 @@ frontend-assignment/
   └── ...other configuration files
 ```
 - `src/`: Contains the application's source code.
-  - `components/`: Holds the React components used to build the UI.
-  - `pages/`: Holds the React components that represent the pages of the application.
-  - `store/`: Holds the Redux store and slices.
+  - `components/`: Contains the React components that are used in the application.
+  - `pages/`: Contains the React pages that are used in the application.
+  - `store/`: Contains the Redux store and slices that are used in the application.
 - `App.tsx`: The main component that acts as the entry point to the application.
 - `index.css`: Contains the Tailwind CSS configuration.
 - `main.tsx`: The entry point of the React application, where it's connected to the HTML template.
