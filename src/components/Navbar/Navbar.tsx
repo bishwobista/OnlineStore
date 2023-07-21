@@ -3,8 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { useSelector } from "react-redux";
 import { FaStore } from 'react-icons/fa'
-
-import { Link } from "react-router-dom";
+import { BsSearch } from 'react-icons/bs'
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -30,22 +29,29 @@ const Navbar = () => {
   return (
       <header className={`${isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'} fixed w-full z-10 transition-all`}>
 
-        <div className="container mx-auto flex items-center justify-between h-full">
-          <Link to="/">
+        <div className="container mx-auto flex items-center justify-between h-full ">
+          <NavLink to="/">
             <div className="flex flex-row items-center justify-center">
-              <FaStore className="w-[40px] mw-auto text-5xl mx-3 " />
+              <FaStore className="w-[40px] mw-auto text-5xl mx-3  " />
               <h1 className="font-bold text-3xl font-serif">Online Store</h1>
             </div>
-          </Link>
-
-          <Link to="/cart">
+          </NavLink>
+          <NavLink to="/search">
+            <div className="flex flex-row items-center text-xl">
+            <BsSearch/>
+            <span className="ml-2 font-bold border-b-2 border-black"
+            >Search</span>
+            </div>
+          </NavLink>
+          <NavLink to="/cart">
           <div className="cursor-pointer flex relative ">
             <AiOutlineShoppingCart className="text-2xl" />
             <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
               {items.length}
             </div>
           </div>
-          </Link>
+          </NavLink>
+          
         </div>
       </header>
   );
