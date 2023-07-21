@@ -2,6 +2,8 @@
 
 Welcome to our Online Store! This project is built to provide a seamless shopping experience. It uses data from [Fake Store API](https://fakestoreapi.com/) to display products and their details.
 
+It's live at [online-store-nepal.netlify.app](https://online-store-nepal.netlify.app/)
+
 ## Technologies Used
 
 - React: JavaScript library for building user interfaces.
