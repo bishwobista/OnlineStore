@@ -26,9 +26,17 @@ const Products = () => {
   })
 
 
-  if (isLoading) return 'Loading...'
+  if (isLoading) return (
+    <>
+    <section className='h-screen flex justify-center items-center'> Loading...</section>
+    </>
+  );
 
-  if (error) return 'An error has occurred: '
+  if (error) return (
+    <>
+    <section className='h-screen flex justify-center items-center'> An error has occured</section>
+    </>
+  )
 
   return (
     <>

@@ -10,62 +10,59 @@ const Product = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const handleClick = (product:any) => {
+  const handleClick = (product: any) => {
     dispatch(add(product));
   };
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['repoData', id], 
+    queryKey: ['repoData', id],
     queryFn: () => axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => res.data),
   });
 
-  if (isLoading) return 'Loading...';
+  if (isLoading) return (
+    <>
+      <section className='h-screen flex justify-center items-center'> Loading...</section>
+    </>
+  );
 
-  if (error) return `An error has occurred`;
+  if (error) return (
+    <>
+      <section className='h-screen flex justify-center items-center'> An error has occured</section>
+    </>
+  )
 
   const product = data;
 
   return (
     <>
-      <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <img
-            alt={product?.title}
-            className="lg:w-1/2 w-full lg:h-auto h-64 max-h-[500px] object-contain object-center rounded"
-            src= {product?.image}
-          />
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">
-              {product?.category}
-            </h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {product?.title}
-            </h1>
+   
+      <div>
+      <section className='pt-32 pb-12 lg:py-32  flex items-center'>
+        <div className="container mx-auto">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className='flex flex-1 justify-center items-center mb-8 lg:mb-0'>
             
-            <p className="leading-relaxed">
-              {product?.description}
-            </p>
-            
-            <div className="flex">
-              <span className="title-font font-medium text-2xl text-gray-900">
-                ${product?.price}
-              </span>
-              <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-              onClick={
-                      () => {
-                        handleClick(product)
-                      }
-                    }
+              <img className='max-w-[200px] lg:max-w-xs'
+              src={product.image} alt={product.title} />
+            </div>
+            <div className=' flex-1 text-center lg:text-left'>
+              <h1 className='text-[26px] font-medium mb-2 max-w-[450px]  mx-auto lg:mx-0'
+              >{product.title}</h1>
+              <div className="text-xl text-red-500 font-medium mb-6">
+                ${product.price}
+              </div>
+              <p className='mb-8'
               >
-                Add to Cart
-              </button>
-              
+                {product.description}
+              </p>
+              <button className='bg-[#070404] py-4 px-8 text-white'
+                onClick={ () => {  handleClick(product) } }
+              >Add to Cart</button>
             </div>
           </div>
         </div>
+      </section>
       </div>
-    </section>
     </>
   );
 };
