@@ -12,7 +12,7 @@ const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 60) {
+      if (window.scrollY > 40) {
         setIsActive(true);
       } else {
         setIsActive(false);
@@ -20,7 +20,7 @@ const Navbar = () => {
     });
   }
     , []);
-  //responsive menu using react-icons
+  
 
   const items = useSelector((state: any) => {
     return state.cart;
