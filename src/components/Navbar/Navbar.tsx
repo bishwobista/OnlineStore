@@ -2,8 +2,25 @@ import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { useSelector } from "react-redux";
+import { FaStore } from 'react-icons/fa'
+
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 60) {
+        setIsActive(true);
+      } else {
+        setIsActive(false);
+      }
+    });
+  }
+    , []);
   //responsive menu using react-icons
 
   const items = useSelector((state: any) => {
@@ -11,35 +28,26 @@ const Navbar = () => {
   });
 
   return (
-    <header className="text-gray-600 body-font">
-      <nav className="flex justify-between items-center">
-        <div className="flex items-center space-x-4">
-          <NavLink to="/" className="text-2xl font-bold text-gray-800 lg:text-3xl hover:text-gray-700">
-            Online Store
-          </NavLink>
-          <ul className="lg:flex lg:flex-row lg:space-x-8">
-            <li className="text-gray-700 font-medium text-base hover:text-gray-600">
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li className="text-gray-700 font-medium text-base hover:text-gray-600">
-              <NavLink to="/search">
-                Search
-              </NavLink>
-            </li>
-          </ul>
+      <header className={`${isActive ? 'bg-white py-4 shadow-md' : 'bg-none py-6'} fixed w-full z-10 transition-all`}>
+
+        <div className="container mx-auto flex items-center justify-between h-full">
+          <Link to="/">
+            <div className="flex flex-row items-center justify-center">
+              <FaStore className="w-[40px] mw-auto text-5xl mx-3 " />
+              <h1 className="font-bold text-3xl font-serif">Online Store</h1>
+            </div>
+          </Link>
+
+          <Link to="/cart">
+          <div className="cursor-pointer flex relative ">
+            <AiOutlineShoppingCart className="text-2xl" />
+            <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
+              {items.length}
+            </div>
+          </div>
+          </Link>
         </div>
-        <div className="flex items-center space-x-4">
-          <NavLink to="/cart">
-            <span className="relative inline-block">
-              <AiOutlineShoppingCart className="text-xl" />
-              {items.length > 0 && (
-                <sup className="absolute top-0 right-0 bg-red-500 text-white rounded-full px-1 text-xs">{items.length}</sup>
-              )}
-            </span>
-          </NavLink>
-        </div>
-      </nav>
-    </header>
+      </header>
   );
 };
 
