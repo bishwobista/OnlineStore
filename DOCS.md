@@ -82,7 +82,7 @@ frontend-assignment/
   - `components/`: Holds the React components used to build the UI.
   - `pages/`: Holds the React components that represent the pages of the application.
   - `store/`: Holds the Redux store and slices.
-  - `App.tsx`: The main component that acts as the entry point to the application.
+- `App.tsx`: The main component that acts as the entry point to the application.
 - `index.css`: Contains the Tailwind CSS configuration.
 - `main.tsx`: The entry point of the React application, where it's connected to the HTML template.
 - `package.json`: Contains the project's metadata and dependencies.
