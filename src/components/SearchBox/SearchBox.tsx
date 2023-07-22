@@ -23,7 +23,7 @@ const SearchBox = () => {
     val.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  
+
   const sortedProducts = filteredProducts.slice().sort((a, b) => {
     if (sortByPrice === 'asc') {
       return a.price - b.price;
@@ -38,20 +38,21 @@ const SearchBox = () => {
   return (
     <>
       <section className='container mx-auto flex flex-col items-center justify-center space-y-4 p-44 h-full '>
-      <div className="flex items-center"> 
-        <form>
-          <input
-            type='text'
-            placeholder='Search'
-            value={search}
-            className='w-full outline-none px-2 py-1 border-b-2 border-gray-500 '
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-        </form>
-          <div className="flex items-center w-full md:w-auto"> 
-            
+      <div className="flex flex-col items-center md:flex-row md:items-center">
+
+          <form>
+            <input
+              type='text'
+              placeholder='Search'
+              value={search}
+              className='w-full outline-none px-2 py-1 border-b-2 border-gray-500 md: m-5'
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </form>
+          <div className="flex items-center w-full md:w-auto px-10 ">
+
             <select
               id="sortSelect"
               className="px-2 py-1 border rounded outline-none"
